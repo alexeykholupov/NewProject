@@ -7,6 +7,8 @@ class CreateTasks < ActiveRecord::Migration
       t.datetime :start_date
       t.datetime :due_date
       t.datetime :estimations
+      t.references :project, index: true, foreign_key: true
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end
