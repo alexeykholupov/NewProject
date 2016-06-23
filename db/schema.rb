@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623121828) do
+ActiveRecord::Schema.define(version: 20160623133447) do
+
+  create_table "post_comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "post_comments", ["post_id"], name: "index_post_comments_on_post_id"
+  add_index "post_comments", ["user_id"], name: "index_post_comments_on_user_id"
+
+  create_table "posts", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "posts", ["project_id"], name: "index_posts_on_project_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +56,31 @@ ActiveRecord::Schema.define(version: 20160623121828) do
 
   add_index "projects_teams", ["project_id"], name: "index_projects_teams_on_project_id"
   add_index "projects_teams", ["team_id"], name: "index_projects_teams_on_team_id"
+
+  create_table "task_comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "task_comments", ["task_id"], name: "index_task_comments_on_task_id"
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "status"
+    t.datetime "start_date"
+    t.datetime "due_date"
+    t.datetime "estimations"
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
