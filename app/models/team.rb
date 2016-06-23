@@ -1,3 +1,4 @@
 class Team < ActiveRecord::Base
-  belongs_to :project
+  has_many :projects, through: :projects_teams
+  has_many :projects_teams
 end

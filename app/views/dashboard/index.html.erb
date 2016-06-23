@@ -1,5 +1,8 @@
 <h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<%= link_to 'Команды', teams_url %>
+<%= link_to 'Новая команда', new_team_url %>
+<%= link_to 'Проекты', projects_url %>
+<%= link_to 'Новый проект', new_project_url %>
 <% if user_signed_in? %>
     <span>Здравствуйте, <%= current_user.first_name %></span>
     <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
