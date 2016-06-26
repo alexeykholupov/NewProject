@@ -1,6 +1,8 @@
 <h1>Dashboard#index</h1>
 <%= link_to 'Команды', teams_url %>
-<%= link_to 'Новая команда', new_team_url %>
+<% if can? :manage, :all %>
+  <%= link_to 'Новая команда', new_team_url %>
+  <% end %>
 <%= link_to 'Проекты', projects_url %>
 <%= link_to 'Новый проект', new_project_url %>
 <% if user_signed_in? %>
