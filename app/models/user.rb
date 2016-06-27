@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
   belongs_to :team
   has_many :posts
   has_many :tasks
-  has_many :post_coments
+  has_many :comments
 end

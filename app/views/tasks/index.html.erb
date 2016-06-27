@@ -7,6 +7,7 @@
     <tr>
       <th>Title</th>
       <th>Content</th>
+      <th>Comments</th>
       <th>Status</th>
       <th>Start date</th>
       <th>Due date</th>
@@ -22,12 +23,13 @@
       <tr>
         <td><%= task.title %></td>
         <td><%= task.content %></td>
+        <td><%= task.description %></td>
         <td><%= task.status %></td>
         <td><%= task.start_date %></td>
         <td><%= task.due_date %></td>
         <td><%= task.estimations %></td>
-        <td><%= task.project %></td>
-        <td><%= task.user %></td>
+        <td><%= task.project['name'] %></td>
+        <td><%= task.user['email'] %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
