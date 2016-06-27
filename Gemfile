@@ -47,6 +47,7 @@ group :development do
   gem 'devise'
   gem 'cancancan', '~> 1.10'
   gem 'faker'
+  gem 'simple_form'
 
 end
 

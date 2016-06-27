@@ -1,7 +1,6 @@
 FactoryGirl.define do
-  factory :comment, class: 'Comments' do
-    content "MyText"
-    user nil
-    post nil
+  factory :comment do
+    post_id 1
+    body "MyText"
   end
 end
