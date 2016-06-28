@@ -1,9 +1,35 @@
-<p id="notice"><%= notice %></p>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Main Page<span class="sr-only"></span></a></li>
+        <li class="active"><a href="/teams">Teams</a></li>
+        <li><a href="/projects">Projects</a></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li><a href="/posts">Posts</a></li>
+        <li><a href="/tasks">Tasks</a></li></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><% if user_signed_in? %>
+    <p class="navbar-text">Welcome, <%= current_user.first_name %></p>
+<% end %></li>
+        <li><button type="button" class="btn btn-default navbar-btn"><%= link_to 'Exit', destroy_user_session_path, :method => :delete %>
+<% else %></button></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-<h1>Listing Teams</h1>
 
-<table>
-  <thead>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h1>Listing Teams</h1></div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
     <tr>
       <th>Name</th>
       <th>Project</th>
@@ -22,9 +48,9 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+  </table>
+</div>
 
 <br>
 
 <%= link_to 'New Team', new_team_path %>
-<%= link_to 'Main Page', root_path %>
