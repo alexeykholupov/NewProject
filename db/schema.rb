@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627232812) do
+ActiveRecord::Schema.define(version: 20160628135921) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -47,9 +47,11 @@ ActiveRecord::Schema.define(version: 20160627232812) do
 
   add_index "projects", ["team_id"], name: "index_projects_on_team_id"
 
-  create_table "projects_teams", id: false, force: :cascade do |t|
-    t.integer "project_id"
-    t.integer "team_id"
+  create_table "projects_teams", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "projects_teams", ["project_id"], name: "index_projects_teams_on_project_id"
