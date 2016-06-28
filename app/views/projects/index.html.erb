@@ -49,8 +49,10 @@
         <td><%= project.end_date %></td>
         <td><%= project.teams.map(&:name).join(', ') %></td>
         <td><%= link_to 'Show', project %></td>
+        <% if can? :manage, :all %> 
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
@@ -58,5 +60,6 @@
 </div>
 
 <br>
-
+<% if can? :manage, :all %> 
 <%= link_to 'New Project', new_project_path %>
+<%end%>

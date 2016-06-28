@@ -66,6 +66,7 @@
   <strong>User:</strong>
   <%= @task.user['email'] %>
 </p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
+<% if can? :manage, :all %>
+<%= link_to 'Edit|', edit_task_path(@task) %>
+<%end%> 
 <%= link_to 'Back', tasks_path %>

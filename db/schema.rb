@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628135921) do
+ActiveRecord::Schema.define(version: 20160628160504) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20160628135921) do
   add_index "posts", ["project_id"], name: "index_posts_on_project_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
+  create_table "project_teams", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "project_teams", ["project_id"], name: "index_project_teams_on_project_id"
+  add_index "project_teams", ["team_id"], name: "index_project_teams_on_team_id"
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.text     "summary"
@@ -46,16 +56,6 @@ ActiveRecord::Schema.define(version: 20160628135921) do
   end
 
   add_index "projects", ["team_id"], name: "index_projects_on_team_id"
-
-  create_table "projects_teams", force: :cascade do |t|
-    t.integer  "team_id"
-    t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "projects_teams", ["project_id"], name: "index_projects_teams_on_project_id"
-  add_index "projects_teams", ["team_id"], name: "index_projects_teams_on_team_id"
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title"

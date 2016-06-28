@@ -38,10 +38,11 @@
   <strong>Project:</strong>
   <%= @post.project['name'] %>
 </p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if can? :manage, :all %>
+<%= link_to 'Edit|', edit_post_path(@post) %>
+<%end%> 
 <%= link_to 'Back', posts_path %>
-<%= link_to 'Main Page', root_path %>
+
 <h1>Comments</h1>
 	<div>
 	  <%= render :partial => @post.comments %>

@@ -34,6 +34,7 @@
   <strong>Project:</strong>
   <%= @team.projects.map(&:name).join(', ') %>
 </p>
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
+<% if can? :manage, :all %>
+<%= link_to 'Edit |', edit_team_path(@team) %>
+<%end%> 
 <%= link_to 'Back', teams_path %>

@@ -44,14 +44,18 @@
         <td><%= team.name %></td>
         <td><%= team.projects.map(&:name).join(', ') %></td>
         <td><%= link_to 'Show', team %></td>
+         <% if can? :manage, :all %>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
+      
     <% end %>
   </tbody>
   </table>
 </div>
 
 <br>
-
+<% if can? :manage, :all %>
 <%= link_to 'New Team', new_team_path %>
+<%end%>

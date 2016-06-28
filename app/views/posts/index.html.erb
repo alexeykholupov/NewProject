@@ -45,8 +45,10 @@
         <td><%= post.user['first_name'] %></td>
         <td><%= post.project['name'] %></td>
         <td><%= link_to 'Show', post %></td>
+        <% if can? :manage, :all %>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -57,6 +59,7 @@
 </table>
 
 <br>
-
+<% if can? :manage, :all %>
 <%= link_to 'New Post', new_post_path %>
+<%end%>
 
