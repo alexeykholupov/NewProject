@@ -46,7 +46,7 @@
 
 <p>
   <strong>Team:</strong>
-  <%= @project.teams %>
+  <%= @project.teams.map(&:name).join(', ') %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
